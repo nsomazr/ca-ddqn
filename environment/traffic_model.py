@@ -17,7 +17,6 @@ class TrafficConfig:
     max_traffic_duration: int
     sensor_arrival_rate: float
 
-
 class TrafficModel:
     """
     Simple Bernoulli arrival traffic model.
