@@ -1,0 +1,63 @@
+satellite:
+  orbit_type: "LEO"
+  orbit_characteristic: "polar"
+  num_satellites: 1
+  uplink_freq_min_mhz: 401.580
+  uplink_freq_max_mhz: 401.690
+  center_frequency_mhz: 401.650
+  num_channels: 14
+  channel_bandwidth_khz: 2.0
+  platforms_to_process: 22000
+  uplink_data_rate_bps: 400
+  max_message_length_bytes: 32
+  data_per_pass_bits: 30000
+
+environment:
+  max_traffic_duration: 15          # max task duration in time steps
+  simulation_steps: 500            # episode length (can be overridden in scripts)
+  sensor_arrival_rate: 0.4          # probability of a new request per step
+  max_waiting_queue: 20             # maximum queued sensors (defines action space)
+  state_window_size: 10             # T in the paper (timesteps forward in state)
+
+training:
+  discount_factor: 0.95             # gamma (Table 3)
+  learning_rate: 0.0008             # slightly tuned but close to 1e-3 in paper
+  num_episodes: 2000 # 20000 in paper
+  minibatch_size: 64
+  replay_buffer_size: 50000
+  epsilon_start: 1.0
+  epsilon_min: 0.05
+  epsilon_decay: 0.9996
+  target_update_frequency: 1000
+  final_exploration_factor: 0.02
+
+network:
+  hidden_layers: [128, 64, 32]
+  dropout_rate: 0.1
+
+ddqn:
+  use_double_q: true
+  dueling_architecture: false
+  target_update_frequency: 1000
+
+reward:
+  # Exact CA-DRL paper reward: R_t = - sum(q_x) over waiting tasks
+  type: "queue_duration"
+
+evaluation:
+  num_eval_episodes: 2000
+  eval_interval: 1000
+  metrics_window: 100
+
+reproducibility:
+  random_seed: 42
+
+baselines_from_paper:
+  # Directly taken from Table 4 of the CA-DRL paper.
+  fcfs:
+    average_delay: 1.08
+    average_reward: -773.1
+  random_access:
+    average_delay: 1.25
+    average_reward: -910.2
+
