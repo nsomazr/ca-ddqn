@@ -102,6 +102,43 @@ Outputs:
 
 - `models/ddqn_model.pt`: trained DDQN model checkpoint
 
+### Evaluation from saved models (validation)
+
+After training and saving checkpoints, you can run **pure evaluation** (no learning) using:
+
+- **Evaluate CA-DRL model vs baselines**:
+
+  ```bash
+  cd ca-ddqn
+  python -m evaluation.evaluate_cadrl_model
+  ```
+
+  Outputs under `results/model_eval/ca_drl/`:
+  - `ca_drl_model_evaluation.json`: CA-DRL summary metrics and comparison vs FCFS/Random
+  - `algorithm_comparison_cadrl_model.png`: bar plot for CA-DRL vs baselines
+
+- **Evaluate DDQN model vs baselines**:
+
+  ```bash
+  cd ca-ddqn
+  python -m evaluation.evaluate_ddqn_model
+  ```
+
+  Outputs under `results/model_eval/ddqn/`:
+  - `ddqn_model_evaluation.json`: DDQN summary metrics and comparison vs baselines
+  - `algorithm_comparison_ddqn_model.png`: bar plot for DDQN vs baselines
+
+- **Evaluate CA-DRL and DDQN models together (head-to-head)**:
+
+  ```bash
+  cd ca-ddqn
+  python -m evaluation.evaluate_saved_models
+  ```
+
+  Outputs under `results/model_eval/`:
+  - `model_evaluation_results.json`: CA-DRL vs DDQN vs baselines
+  - `algorithm_comparison_models.png`: bar plot comparing all algorithms
+
 ### Reproducibility
 
 - All experiments use a single YAML config at `configs/experiment_config.yaml` for:

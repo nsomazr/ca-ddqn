@@ -1,0 +1,5 @@
+step,chosen_action,meaning
+0,0,"schedule sensor at queue position 0 if it exists"
+1,5,"schedule sensor at queue position 5 if it exists"
+2,20,"no-op: do not schedule any sensor this step"
+

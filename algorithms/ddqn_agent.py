@@ -158,6 +158,27 @@ class DDQNAgent:
             path,
         )
 
+    def load(self, path: str, strict: bool = True) -> None:
+        checkpoint = torch.load(path, map_location=self.device)
+        self.q_net.load_state_dict(checkpoint["q_net_state_dict"], strict=strict)
+        self.target_net.load_state_dict(checkpoint["target_net_state_dict"], strict=strict)
+        if "optimizer_state_dict" in checkpoint:
+            self.optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+        if "epsilon" in checkpoint:
+            self.epsilon = float(checkpoint["epsilon"])
+
+    def act(self, state: np.ndarray) -> Tuple[int, np.ndarray]:
+        """
+        Deterministic action selection for a single state.
+
+        Returns the greedy action and the raw Q-values for inspection.
+        """
+        with torch.no_grad():
+            s = torch.from_numpy(state).float().unsqueeze(0).to(self.device)
+            q = self.q_net(s)
+            action = int(q.argmax(dim=1).item())
+        return action, q.cpu().numpy().squeeze(0)
+
 
 class DDQNTrainer:
     def __init__(self, env: SatelliteEnvironment, agent: DDQNAgent) -> None:

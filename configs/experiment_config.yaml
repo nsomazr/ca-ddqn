@@ -22,7 +22,7 @@ environment:
 training:
   discount_factor: 0.95             # gamma (Table 3)
   learning_rate: 0.0008             # slightly tuned but close to 1e-3 in paper
-  num_episodes: 2000 # 20000 in paper
+  num_episodes: 20000 # match paper more closely
   minibatch_size: 64
   replay_buffer_size: 50000
   epsilon_start: 1.0

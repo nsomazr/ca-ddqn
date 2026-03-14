@@ -1,0 +1,65 @@
+{
+  "config": {
+    "satellite": {
+      "num_channels": 14,
+      "platforms_to_process": 22000
+    },
+    "environment": {
+      "max_traffic_duration": 15,
+      "simulation_steps": 500,
+      "sensor_arrival_rate": 0.4,
+      "max_waiting_queue": 20,
+      "state_window_size": 10
+    },
+    "training": {
+      "discount_factor": 0.95,
+      "learning_rate": 0.0008,
+      "num_episodes": 20000,
+      "minibatch_size": 64,
+      "replay_buffer_size": 50000,
+      "epsilon_start": 1.0,
+      "epsilon_min": 0.05,
+      "epsilon_decay": 0.9996,
+      "target_update_frequency": 1000
+    },
+    "evaluation": {
+      "num_eval_episodes": 2000,
+      "eval_interval": 1000,
+      "metrics_window": 100
+    },
+    "baselines": {
+      "fcfs_delay": 1.08,
+      "fcfs_reward": -773.1,
+      "random_delay": 1.25,
+      "random_reward": -910.2
+    },
+    "random_seed": 42
+  },
+  "summary": {
+    "algorithm": "CA-DRL",
+    "average_reward": -97.3982162475586,
+    "average_delay": 0.37137022614479065,
+    "average_throughput": 225.42379760742188
+  },
+  "comparison": {
+    "Random Access": {
+      "average_delay": 1.25,
+      "average_reward": -910.2,
+      "average_reward_per_step": -1.8204,
+      "average_throughput": null
+    },
+    "FCFS": {
+      "average_delay": 1.08,
+      "average_reward": -773.1,
+      "average_reward_per_step": -1.5462,
+      "average_throughput": null
+    },
+    "CA-DRL": {
+      "algorithm": "CA-DRL",
+      "average_reward": -97.3982162475586,
+      "average_delay": 0.37137022614479065,
+      "average_throughput": 225.42379760742188,
+      "average_reward_per_step": -0.1947964324951172
+    }
+  }
+}
