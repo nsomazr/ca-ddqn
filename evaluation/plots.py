@@ -65,9 +65,12 @@ def plot_algorithm_comparison(
 
     x = np.arange(len(algos))
     width = 0.35
+    # One color per algorithm so each bar is distinct
+    colors = ["#2ecc71", "#3498db", "#e74c3c", "#9b59b6", "#f39c12"]
 
     plt.figure(figsize=(7, 4))
-    plt.bar(x - width / 2, delays, width, label="Average delay")
+    bar_colors = [colors[i % len(colors)] for i in range(len(algos))]
+    plt.bar(x - width / 2, delays, width, label="Average delay", color=bar_colors)
     plt.xticks(x, algos, rotation=20)
     plt.ylabel("Delay ratio")
     plt.grid(True, axis="y", alpha=0.3)
@@ -76,7 +79,7 @@ def plot_algorithm_comparison(
     plt.close()
 
     plt.figure(figsize=(7, 4))
-    plt.bar(x - width / 2, rewards, width, label="Average reward", color="green")
+    plt.bar(x - width / 2, rewards, width, label="Average reward", color=bar_colors)
     plt.xticks(x, algos, rotation=20)
     plt.ylabel("Reward (per step)")
     plt.grid(True, axis="y", alpha=0.3)
@@ -86,7 +89,7 @@ def plot_algorithm_comparison(
 
     # Throughput comparison
     plt.figure(figsize=(7, 4))
-    plt.bar(x - width / 2, throughputs, width, label="Average throughput", color="purple")
+    plt.bar(x - width / 2, throughputs, width, label="Average throughput", color=bar_colors)
     plt.xticks(x, algos, rotation=20)
     plt.ylabel("Throughput (bits / time unit)")
     plt.grid(True, axis="y", alpha=0.3)
