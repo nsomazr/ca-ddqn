@@ -1,0 +1,29 @@
+{
+  "summary": {
+    "algorithm": "CA-DRL",
+    "average_reward": -81.73689270019531,
+    "average_delay": 0.13190224766731262,
+    "average_throughput": 226.07469177246094
+  },
+  "comparison": {
+    "Random Access": {
+      "average_delay": 1.25,
+      "average_reward": -910.2,
+      "average_reward_per_step": -1.8204,
+      "average_throughput": null
+    },
+    "FCFS": {
+      "average_delay": 1.08,
+      "average_reward": -773.1,
+      "average_reward_per_step": -1.5462,
+      "average_throughput": null
+    },
+    "CA-DRL": {
+      "algorithm": "CA-DRL",
+      "average_reward": -81.73689270019531,
+      "average_delay": 0.13190224766731262,
+      "average_throughput": 226.07469177246094,
+      "average_reward_per_step": -0.16347378540039062
+    }
+  }
+}

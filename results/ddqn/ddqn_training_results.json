@@ -1,0 +1,44 @@
+{
+  "ddqn_summary": {
+    "algorithm": "DDQN",
+    "average_reward": -93.8400650024414,
+    "average_delay": 0.3140590786933899,
+    "average_throughput": 225.4467010498047
+  },
+  "comparison": {
+    "Random Access": {
+      "average_delay": 1.25,
+      "average_reward": -910.2,
+      "average_reward_per_step": -1.8204,
+      "average_throughput": null
+    },
+    "FCFS": {
+      "average_delay": 1.08,
+      "average_reward": -773.1,
+      "average_reward_per_step": -1.5462,
+      "average_throughput": null
+    },
+    "CA-DRL": {
+      "algorithm": "CA-DRL",
+      "average_reward": -97.3982162475586,
+      "average_delay": 0.37137022614479065,
+      "average_throughput": 225.42379760742188,
+      "average_reward_per_step": -0.1947964324951172,
+      "delay_improvement_over_fcfs": 65.61386794955642,
+      "delay_improvement_over_random": 70.29038190841675,
+      "reward_improvement_over_fcfs": 87.40160183060942,
+      "reward_improvement_over_random": 89.29925112639435
+    },
+    "DDQN": {
+      "algorithm": "DDQN",
+      "average_reward": -93.8400650024414,
+      "average_delay": 0.3140590786933899,
+      "average_throughput": 225.4467010498047,
+      "average_reward_per_step": -0.18768013000488282,
+      "delay_improvement_over_fcfs": 70.92045567653797,
+      "delay_improvement_over_random": 74.87527370452881,
+      "reward_improvement_over_fcfs": 87.86184646197887,
+      "reward_improvement_over_random": 89.69017084130505
+    }
+  }
+}
